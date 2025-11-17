@@ -13,7 +13,7 @@ public class Mang2Chieu {
     return a;
   }
   public static void xuatMang(int[][] a) {
-    for (int i = 0; i < a.length; i++) {
+    for(int i = 0; i < a.length; i++) {
       for (int j = 0; j < a[i].length; j++) {
         System.out.print(a[i][j] + "\t");
       }

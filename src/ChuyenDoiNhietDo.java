@@ -39,7 +39,7 @@ class NhietDo implements IChucNang {
     f = c * 9 / 5 + 32;
     System.out.println(c + " C = " + f + " F");
   }
-
+ 
   @Override
   public void FSangC(double f) {
     c = (f - 32) * 5 / 9;

@@ -7,7 +7,7 @@ public class SoHoanHao {
       if(n%i==0) sum +=i;
     }
     if(sum == n) return true;
-    else return false;
+    return false;
   }
 
   public static void main(String[] args) {
