@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+git
 public class SoHoanHao {
   public static boolean KtraSoHH(int n){
     int sum = 0;
