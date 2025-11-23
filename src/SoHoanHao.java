@@ -15,5 +15,6 @@ public class SoHoanHao {
     int n=sc.nextInt();
     System.out.println(KtraSoHH(n) ? "yes" : "no");
 
+
   }
 }
