@@ -3,29 +3,28 @@ import java.util.Scanner;
 public class SoArmstrong {
 
   public static void main(String[] args) {
-    Scanner sc=new Scanner(System.in);
-  int n = sc.nextInt();
-  if(n <= 100 || n >= 999) {
-    System.out.println("No");
-  }
-  else{
-    int tram = n / 100;
-    int chuc = (n / 10) % 10;
-    int don = n % 10;
+    Scanner boDocDuLieu = new Scanner(System.in);
+    int soDaNhap = boDocDuLieu.nextInt();
 
-    int sumcube = (int)(Math.pow(tram, 3)
-        + Math.pow(chuc, 3)
-        + Math.pow(don, 3));
-
-    if (sumcube == n) {
-      System.out.println("Yes");
-    } else {
+    if(soDaNhap <= 100 || soDaNhap >= 999) {
       System.out.println("No");
     }
-  }
+    else{
+      int chuSoTram = soDaNhap / 100;
+      int chuSoChuc = (soDaNhap / 10) % 10;
+      int chuSoDonVi = soDaNhap % 10;
 
-    sc.close();
+      int tongLapPhuong = (int)(Math.pow(chuSoTram, 3)
+          + Math.pow(chuSoChuc, 3)
+          + Math.pow(chuSoDonVi, 3));
+
+      if (tongLapPhuong == soDaNhap) {
+        System.out.println("Yes");
+      } else {
+        System.out.println("No");
+      }
+    }
+
+    boDocDuLieu.close();
   }
 }
-
-

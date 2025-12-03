@@ -1,87 +1,87 @@
 import java.util.Scanner;
 
-interface IChucNang {
-  void CSangF(double c);
-  void FSangC(double f);
+interface ChucNangChuyenDoi {
+  void ChuyenCSangF(double doC);
+  void ChuyenFSangC(double doF);
 }
 
-class NhietDo implements IChucNang {
+class GiaTriNhietDo implements ChucNangChuyenDoi {
 
-  private double c;
-  private double f;
+  private double giaTriC;
+  private double giaTriF;
 
-  public NhietDo() {
+  public GiaTriNhietDo() {
   }
 
-  public NhietDo(double c, double f) {
-    this.c = c;
-    this.f = f;
+  public GiaTriNhietDo(double giaTriC, double giaTriF) {
+    this.giaTriC = giaTriC;
+    this.giaTriF = giaTriF;
   }
 
-  public double getC() {
-    return c;
+  public double layGiaTriC() {
+    return giaTriC;
   }
 
-  public void setC(double c) {
-    this.c = c;
+  public void datGiaTriC(double giaTriC) {
+    this.giaTriC = giaTriC;
   }
 
-  public double getF() {
-    return f;
+  public double layGiaTriF() {
+    return giaTriF;
   }
 
-  public void setF(double f) {
-    this.f = f;
+  public void datGiaTriF(double giaTriF) {
+    this.giaTriF = giaTriF;
   }
 
   @Override
-  public void CSangF(double c) {
-    f = c * 9 / 5 + 32;
-    System.out.println(c + " C = " + f + " F");
+  public void ChuyenCSangF(double doC) {
+    giaTriF = doC * 9 / 5 + 32;
+    System.out.println(doC + " C = " + giaTriF + " F");
   }
- 
+
   @Override
-  public void FSangC(double f) {
-    c = (f - 32) * 5 / 9;
-    System.out.println(f + " F = " + c + " C");
+  public void ChuyenFSangC(double doF) {
+    giaTriC = (doF - 32) * 5 / 9;
+    System.out.println(doF + " F = " + giaTriC + " C");
   }
 }
 
-class Menu {
-  public void hienThi() {
+class GiaoDienMenu {
+  public void HienThiTuyChon() {
     System.out.println("=== CHUYEN DOI NHIET DO ===");
     System.out.println("1. C sang F");
     System.out.println("2. F sang C");
     System.out.println("3. Thoat");
   }
 
-  public int chon(Scanner sc) {
+  public int ChonTuyChon(Scanner boDocDuLieu) {
     System.out.print("Chon (1-3): ");
-    return sc.nextInt();
+    return boDocDuLieu.nextInt();
   }
 }
 
 public class ChuyenDoiNhietDo {
   public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    Menu menu = new Menu();
-    NhietDo nhietDo = new NhietDo();
-    int choice;
+    Scanner boDocDuLieu = new Scanner(System.in);
+    GiaoDienMenu menu = new GiaoDienMenu();
+    GiaTriNhietDo nhietDo = new GiaTriNhietDo();
+    int luaChon;
 
     do {
-      menu.hienThi();
-      choice = menu.chon(sc);
+      menu.HienThiTuyChon();
+      luaChon = menu.ChonTuyChon(boDocDuLieu);
 
-      switch (choice) {
+      switch (luaChon) {
         case 1:
           System.out.print("Nhap do C: ");
-          double c = sc.nextDouble();
-          nhietDo.CSangF(c);
+          double doC = boDocDuLieu.nextDouble();
+          nhietDo.ChuyenCSangF(doC);
           break;
         case 2:
           System.out.print("Nhap do F: ");
-          double f = sc.nextDouble();
-          nhietDo.FSangC(f);
+          double doF = boDocDuLieu.nextDouble();
+          nhietDo.ChuyenFSangC(doF);
           break;
         case 3:
           System.out.println("Tam biet!");
@@ -90,8 +90,8 @@ public class ChuyenDoiNhietDo {
           System.out.println("Lua chon khong hop le. Chon lai!");
       }
       System.out.println();
-    } while (choice != 3);
+    } while (luaChon != 3);
 
-    sc.close();
+    boDocDuLieu.close();
   }
 }
