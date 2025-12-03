@@ -3,28 +3,29 @@ import java.util.Scanner;
 public class DemSoNgayTrongThang {
 
   public static void main(String[] args) {
-    Scanner sc=new Scanner(System.in);
-    int m = sc.nextInt();
-    int y = sc.nextInt();
-    int d;
-    if(m< 1 || m > 12) {
+    Scanner boDocDuLieu = new Scanner(System.in);
+    int thang = boDocDuLieu.nextInt();
+    int nam = boDocDuLieu.nextInt();
+    int soNgay;
+
+    if(thang < 1 || thang > 12) {
       System.out.println("thang khong hop le");
       return;
     }
-    if(m == 1 || m == 3|| m ==5||m==7||m==8||m==10||m==12){
-      d = 31;
+
+    if(thang == 1 || thang == 3|| thang == 5|| thang == 7|| thang == 8|| thang == 10|| thang == 12){
+      soNgay = 31;
     }
-    else if(m == 2) {
-      if ((y % 4 == 0 && y % 100 != 0) || (y % 400 == 0))
-        d = 29;
+    else if(thang == 2) {
+      if ((nam % 4 == 0 && nam % 100 != 0) || (nam % 400 == 0))
+        soNgay = 29;
       else {
-        d = 28;
+        soNgay = 28;
       }
-    }else{
-     d = 30;
+    } else {
+      soNgay = 30;
     }
-    System.out.println("Thang "+ m +" nam " + y + " co "+ d+ " ngay");
+
+    System.out.println("Thang "+ thang +" nam " + nam + " co "+ soNgay + " ngay");
   }
-
-
 }

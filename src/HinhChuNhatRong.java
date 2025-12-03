@@ -3,20 +3,20 @@ import java.util.Scanner;
 public class HinhChuNhatRong {
 
   public static void main(String[] args) {
-    Scanner sc=new Scanner(System.in);
-    int h = sc.nextInt();
-    int w = sc.nextInt();
-    if(h < 3 || w < 3 || h >20 || w >20) return;
-    for (int i = 1; i <= h; i++) {
-      for (int j = 1; j <= w; j++) {
-        if (i == 1 || i == h || j == 1 || j == w)
+    Scanner boDocDuLieu = new Scanner(System.in);
+    int chieuCao = boDocDuLieu.nextInt();
+    int chieuRong = boDocDuLieu.nextInt();
+
+    if(chieuCao < 3 || chieuRong < 3 || chieuCao > 20 || chieuRong > 20) return;
+
+    for (int chiSoDong = 1; chiSoDong <= chieuCao; chiSoDong++) {
+      for (int chiSoCot = 1; chiSoCot <= chieuRong; chiSoCot++) {
+        if (chiSoDong == 1 || chiSoDong == chieuCao || chiSoCot == 1 || chiSoCot == chieuRong)
           System.out.print("*");
         else
           System.out.print(" ");
       }
       System.out.println();
-      }
     }
-
   }
-
+}

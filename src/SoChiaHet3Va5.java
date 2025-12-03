@@ -3,15 +3,14 @@ import java.util.Scanner;
 public class SoChiaHet3Va5 {
 
   public static void main(String[] args) {
-    Scanner sc=new Scanner(System.in);
-    int sum = 0;
-    int n =sc.nextInt();
-      for (int i = 1; i <= n; i++) {
-        if (i % 3 == 0 || i % 5 == 0) {
-          sum += i;
-        }
+    Scanner docDuLieu = new Scanner(System.in);
+    int tongCacSo = 0;
+    int gioiHanN = docDuLieu.nextInt();
+    for (int soHienTai = 1; soHienTai <= gioiHanN; soHienTai++) {
+      if (soHienTai % 3 == 0 || soHienTai % 5 == 0) {
+        tongCacSo += soHienTai;
       }
-      System.out.println(sum);
-
+    }
+    System.out.println(tongCacSo);
   }
 }
