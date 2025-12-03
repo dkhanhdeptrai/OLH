@@ -2,41 +2,48 @@ import java.util.Scanner;
 import java.util.Arrays;
 
 public class QuickSort {
-  private static void swap(int[] arr, int i, int j) {
-    int temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
+
+  private static void HoanDoi(int[] mangSoNguyen, int chiSoA, int chiSoB) {
+    int giaTriTam = mangSoNguyen[chiSoA];
+    mangSoNguyen[chiSoA] = mangSoNguyen[chiSoB];
+    mangSoNguyen[chiSoB] = giaTriTam;
   }
-  private static int partition(int[] arr, int low, int high) {
-    int pivot = arr[high];
-    int i = (low - 1);
-    for (int j = low; j < high; j++) {
-      if (arr[j] < pivot) {
-        i++;
-        swap(arr, i, j);
+
+  private static int PhanHoach(int[] mangSoNguyen, int chiSoDau, int chiSoCuoi) {
+    int giaTriChot = mangSoNguyen[chiSoCuoi];
+    int chiSoGiaTriNhoHon = (chiSoDau - 1);
+
+    for (int chiSoDuyet = chiSoDau; chiSoDuyet < chiSoCuoi; chiSoDuyet++) {
+      if (mangSoNguyen[chiSoDuyet] < giaTriChot) {
+        chiSoGiaTriNhoHon++;
+        HoanDoi(mangSoNguyen, chiSoGiaTriNhoHon, chiSoDuyet);
       }
     }
-    swap(arr, i + 1, high);
-    return i + 1;
+
+    HoanDoi(mangSoNguyen, chiSoGiaTriNhoHon + 1, chiSoCuoi);
+    return chiSoGiaTriNhoHon + 1;
   }
-  public static void quickSort(int[] arr, int low, int high) {
-    if (low < high) {
-      int pi = partition(arr, low, high);
-      quickSort(arr, low, pi - 1);
-      quickSort(arr, pi + 1, high);
+
+  public static void SapXepNhanh(int[] mangSoNguyen, int chiSoDau, int chiSoCuoi) {
+    if (chiSoDau < chiSoCuoi) {
+      int chiSoChot = PhanHoach(mangSoNguyen, chiSoDau, chiSoCuoi);
+      SapXepNhanh(mangSoNguyen, chiSoDau, chiSoChot - 1);
+      SapXepNhanh(mangSoNguyen, chiSoChot + 1, chiSoCuoi);
     }
   }
 
   public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    int n = sc.nextInt();
-    int[] arr = new int[n];
-    for(int k = 0; k < n; k++){
-      arr[k] = sc.nextInt();
-    }
-    quickSort(arr, 0, n - 1);
-    System.out.println(Arrays.toString(arr));
+    Scanner boDocDuLieu = new Scanner(System.in);
+    int kichThuocMang = boDocDuLieu.nextInt();
+    int[] mangSoNguyen = new int[kichThuocMang];
 
-    sc.close();
+    for(int chiSoNhap = 0; chiSoNhap < kichThuocMang; chiSoNhap++){
+      mangSoNguyen[chiSoNhap] = boDocDuLieu.nextInt();
+    }
+
+    SapXepNhanh(mangSoNguyen, 0, kichThuocMang - 1);
+    System.out.println(Arrays.toString(mangSoNguyen));
+
+    boDocDuLieu.close();
   }
 }

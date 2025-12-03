@@ -1,46 +1,56 @@
-import java.util.Scanner;
 import java.util.Arrays;
+import java.util.Scanner;
 
-class MergeSort {
-  static void merge(int a[], int l, int m, int r) {
-    int n1 = m - l + 1;
-    int n2 = r - m;
-    int L[] = new int[n1];
-    int R[] = new int[n2];
-    for (int i = 0; i < n1; ++i)
-      L[i] = a[l + i];
-    for (int j = 0; j < n2; ++j)
-      R[j] = a[m + 1 + j];
-    int i = 0, j = 0;
-    int k = l;
-    while (i < n1 && j < n2) {
-      if (L[i] <= R[j]) {
-        a[k++] = L[i++];
+class SapXepTron {
+  static void Tron(int mangChinh[], int trai, int giua, int phai) {
+    int kichThuocMangCon1 = giua - trai + 1;
+    int kichThuocMangCon2 = phai - giua;
+
+    int MangConTrai[] = new int[kichThuocMangCon1];
+    int MangConPhai[] = new int[kichThuocMangCon2];
+
+    for (int chiSo = 0; chiSo < kichThuocMangCon1; ++chiSo)
+      MangConTrai[chiSo] = mangChinh[trai + chiSo];
+
+    for (int chiSo = 0; chiSo < kichThuocMangCon2; ++chiSo)
+      MangConPhai[chiSo] = mangChinh[giua + 1 + chiSo];
+
+    int chiSoTrai = 0, chiSoPhai = 0;
+    int chiSoMangChinh = trai;
+
+    while (chiSoTrai < kichThuocMangCon1 && chiSoPhai < kichThuocMangCon2) {
+      if (MangConTrai[chiSoTrai] <= MangConPhai[chiSoPhai]) {
+        mangChinh[chiSoMangChinh++] = MangConTrai[chiSoTrai++];
       } else {
-        a[k++] = R[j++];
+        mangChinh[chiSoMangChinh++] = MangConPhai[chiSoPhai++];
       }
     }
-    while (i < n1) a[k++] = L[i++];
-    while (j < n2) a[k++] = R[j++];
-  }
-  static void sort(int a[], int l, int r) {
-    if (l < r) {
-      int m = l + (r - l) / 2;
-      sort(a, l, m);
-      sort(a, m + 1, r);
-      merge(a, l, m, r);
-    }
-  }
-  public static void main(String args[]) {
-    Scanner sc = new Scanner(System.in);
-    int n = sc.nextInt();
-    int[] arr = new int[n];
-    for(int k = 0; k < n; k++){
-      arr[k] = sc.nextInt();
-    }
-    sort(arr, 0, arr.length - 1);
-    System.out.println(Arrays.toString(arr));
 
-    sc.close();
+    while (chiSoTrai < kichThuocMangCon1) mangChinh[chiSoMangChinh++] = MangConTrai[chiSoTrai++];
+    while (chiSoPhai < kichThuocMangCon2) mangChinh[chiSoMangChinh++] = MangConPhai[chiSoPhai++];
+  }
+
+  static void SapXep(int mangChinh[], int trai, int phai) {
+    if (trai < phai) {
+      int giua = trai + (phai - trai) / 2;
+      SapXep(mangChinh, trai, giua);
+      SapXep(mangChinh, giua + 1, phai);
+      Tron(mangChinh, trai, giua, phai);
+    }
+  }
+
+  public static void main(String args[]) {
+    Scanner boDocDuLieu = new Scanner(System.in);
+    int kichThuocMang = boDocDuLieu.nextInt();
+    int[] mangSoNguyen = new int[kichThuocMang];
+
+    for(int chiSoNhap = 0; chiSoNhap < kichThuocMang; chiSoNhap++){
+      mangSoNguyen[chiSoNhap] = boDocDuLieu.nextInt();
+    }
+
+    SapXep(mangSoNguyen, 0, mangSoNguyen.length - 1);
+    System.out.println(Arrays.toString(mangSoNguyen));
+
+    boDocDuLieu.close();
   }
 }

@@ -4,24 +4,26 @@ import java.util.Scanner;
 public class SelectionSort {
 
   public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    int n = sc.nextInt();
-    int[] arr = new int[n];
-    for(int k = 0;k<n;k++){
-      arr[k] = sc.nextInt();
+    Scanner boDocDuLieu = new Scanner(System.in);
+    int kichThuocMang = boDocDuLieu.nextInt();
+    int[] mangSoNguyen = new int[kichThuocMang];
+
+    for(int chiSoNhap = 0; chiSoNhap < kichThuocMang; chiSoNhap++){
+      mangSoNguyen[chiSoNhap] = boDocDuLieu.nextInt();
     }
-    for(int i = 0; i < arr.length- 1; i++){
-      int min_idx = i;
-      for(int j = i+1; j<arr.length;j++){
-        if(arr[j]< arr[min_idx]){
-          min_idx = j;
+
+    for(int chiSoDatViTri = 0; chiSoDatViTri < mangSoNguyen.length - 1; chiSoDatViTri++){
+      int chiSoNhoNhat = chiSoDatViTri;
+      for(int chiSoDuyet = chiSoDatViTri + 1; chiSoDuyet < mangSoNguyen.length; chiSoDuyet++){
+        if(mangSoNguyen[chiSoDuyet] < mangSoNguyen[chiSoNhoNhat]){
+          chiSoNhoNhat = chiSoDuyet;
         }
       }
-      int temp = arr[min_idx];
-      arr[min_idx] = arr[i];
-      arr[i] = temp;
+      int giaTriTam = mangSoNguyen[chiSoNhoNhat];
+      mangSoNguyen[chiSoNhoNhat] = mangSoNguyen[chiSoDatViTri];
+      mangSoNguyen[chiSoDatViTri] = giaTriTam;
     }
-    System.out.println(Arrays.toString(arr));
 
+    System.out.println(Arrays.toString(mangSoNguyen));
   }
 }
