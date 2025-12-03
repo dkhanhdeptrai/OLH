@@ -4,21 +4,24 @@ import java.util.Scanner;
 public class InsertionSort {
 
   public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    int n = sc.nextInt();
-    int[] arr = new int[n];
-    for (int k = 0; k < n; k++) {
-      arr[k] = sc.nextInt();
+    Scanner boDocDuLieu = new Scanner(System.in);
+    int kichThuocMang = boDocDuLieu.nextInt();
+    int[] mangSoNguyen = new int[kichThuocMang];
+
+    for (int chiSoNhap = 0; chiSoNhap < kichThuocMang; chiSoNhap++) {
+      mangSoNguyen[chiSoNhap] = boDocDuLieu.nextInt();
     }
-    for (int i = 1; i < n; i++) {
-      int key = arr[i];
-      int j = i - 1;
-      while (j >= 0 && arr[j] > key) {
-        arr[j + 1] = arr[j];
-        j = j - 1;
+
+    for (int chiSoCanChen = 1; chiSoCanChen < kichThuocMang; chiSoCanChen++) {
+      int giaTriCanChen = mangSoNguyen[chiSoCanChen];
+      int chiSoDuyet = chiSoCanChen - 1;
+
+      while (chiSoDuyet >= 0 && mangSoNguyen[chiSoDuyet] > giaTriCanChen) {
+        mangSoNguyen[chiSoDuyet + 1] = mangSoNguyen[chiSoDuyet];
+        chiSoDuyet = chiSoDuyet - 1;
       }
-      arr[j + 1] = key;
+      mangSoNguyen[chiSoDuyet + 1] = giaTriCanChen;
     }
-    System.out.println(Arrays.toString(arr));
+    System.out.println(Arrays.toString(mangSoNguyen));
   }
 }
